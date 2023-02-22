@@ -1,0 +1,32 @@
+@mixin styleText($fs, $fw, $color) {
+   font-size: $fs;
+   font-weight: $fw;
+   color: $color;
+}
+
+@mixin styleBtn($bg, $pd-x, $pd-y, $bd, $br) {
+   background: $bg;
+   padding: $pd-y $pd-x;
+   border: $bd;
+   border-radius: $br;
+}
+
+@mixin styleBtnHover($bg, $bd-color, $color) {
+   background: $bg;
+   border-color: $bd-color;
+   color: $color;
+}
+
+@mixin responsive($screen) {
+   @if (map-has-key($map: $breakpoints, $key: $screen)) {
+      $value: map-get(
+         $map: $breakpoints,
+         $key: $screen,
+      );
+      @media screen and (max-width: $value) {
+         @content;
+      }
+   } @else {
+      @warn "{$screen} isn't in breakpoint";
+   }
+}
