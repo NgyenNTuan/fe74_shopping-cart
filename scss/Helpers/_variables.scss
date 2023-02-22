@@ -1,0 +1,41 @@
+// Color
+$color-purple: #8942a8;
+$color-red: #ba382f;
+$color-black: #010101;
+$color-black-1: rgba(0, 0, 0, 0.75);
+$color-gray-1: #4d4b4b;
+$color-gray-2: rgba(255, 255, 255, 0.25);
+$color-gray-3: #2e2f33;
+
+// Font size
+$fs-1: 0.8rem;
+$fs-2: 0.9rem;
+$fs-3: 1.2rem;
+$fs-4: 1.5rem;
+$fs-5: 2rem;
+
+// Font weight
+$fw-1: 300;
+$fw-2: 400;
+$fw-3: 600;
+$fw-4: 700;
+
+// Padding
+$pd-1: 16px;
+$pd-2: 20px;
+// Height, Width
+
+// Border radius
+$br-1: 20px;
+
+//Break points
+$breakpoints: (
+   "extra-large": 1200px,
+   "large": 992px,
+   "medium": 768px,
+   "small": 576px,
+   "extra-large-down": 1199.98px,
+   "large-down": 991.98px,
+   "medium-down": 767.98px,
+   "small-down": 575.98px,
+);

@@ -10,11 +10,108 @@
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+   <!-- FONT GOOGLE -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet">
+
+   <!-- FONT AWESOME -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
    <!-- MAIN CSS -->
    <link rel="stylesheet" href="./css/main.css">
 </head>
 
 <body>
+   <!-- <i class="fa-solid fa-xmark"></i> ICON X -->
+   <!-- <i class="fa-solid fa-cart-shopping"></i> SHOPPING CART -->
+   <!-- <i class="fa-solid fa-credit-card"></i> CREDIT CARD -->
+   <!-- <i class="fa-solid fa-trash"></i> TRASH -->
+   <!-- <i class="fa-solid fa-chevron-left"></i> LEFT -->
+   <!-- <i class="fa-solid fa-chevron-right"></i> RIGHT -->
+   <div id="app">
+      <div class="banner">
+         <div class="list-cards">
+            <div class="card-product">
+               <div class="card-top">
+                  <i class="fa-brands fa-apple"></i>
+                  <p class="product-stage">In Stock</p>
+               </div>
+               <div class="card-img">
+                  <img class="product-img"
+                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTJiKtlpQGkIeOyAPV3qQMNkl8uuRzfGWZtIDb_WgDnam8WjhpL&amp;usqp=CAU"
+                     alt="">
+               </div>
+               <div class="card-bottom">
+                  <div class="product-name">
+                     <h2>Airpods Pro</h2>
+                     <button onclick="this.classList.toggle('heart')" class="btn-none">
+                        <i class="fa-solid fa-heart"></i>
+                     </button>
+                  </div>
+                  <div class="wrapper">
+                     <h5>Wireless Noise Cancelling Earphones</h5>
+                     <p>AirPods Pro have been designed to deliver active Noise Cancellation for immersive sound.
+                        Transparancy mode so much can
+                        hear your surroundings.</p>
+                  </div>
+                  <div class="product-purchase">
+                     <div class="product-price">$ 400</div>
+                     <button class="btn-p">Add
+                        <i class="fa-solid fa-chevron-right"></i>
+                     </button>
+                     <span class="addQty">
+                        <button class="btn-p">
+                           <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <span class="qtyProd">1</span>
+                        <button class="btn-p">
+                           <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                     </span>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+         <div class="cart-shopping">
+            <button class="btn-none btn-cart">
+               <i class="fa-solid fa-cart-shopping"></i>
+               <span class="totalQty">0</span>
+            </button>
+         </div>
+      </div>
+      <!-- <div class="cover"></div> -->
+      <!-- <div class="side-cart">
+         <div class="side-cart__head">
+            <h3>Cart</h3>
+            <i class="fa-solid fa-xmark"></i>
+         </div>
+         <div class="side-cart__body">
+            <p>Looks Like You Haven't Added Any Product In The Cart</p>
+         </div>
+         <div class="side-cart__bottom">
+            <span class="total-price">Total: $ 0</span>
+            <div>
+               <button id="purchase" class="btn-c">
+                  Purchase
+                  <i class="fa-solid fa-credit-card"></i>
+               </button>
+               <button id="clearCart" class="btn-c">
+                  Clear Cart
+                  <i class="fa-solid fa-trash"></i>
+               </button>
+            </div>
+         </div>
+      </div> -->
+      <div class="payment">
+
+      </div>
+   </div>
 
    <!-- Optional JavaScript -->
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -27,6 +124,11 @@
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
+
+   <!-- AXIOS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js"
+      integrity="sha512-wS6VWtjvRcylhyoArkahZUkzZFeKB7ch/MHukprGSh1XIidNvHG1rxPhyFnL73M0FC1YXPIXLRDAoOyRJNni/g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
    <!-- MAIN JS -->
    <script src="./src/Models/Product.js"></script>

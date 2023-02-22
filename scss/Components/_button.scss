@@ -1,0 +1,60 @@
+.btn-p {
+   @include styleText($fs-1, $fw-1, white);
+   @include styleBtn(none, 10px, 6px, 1px solid white, $br-1);
+
+   i {
+      font-size: $fs-1;
+   }
+   &:hover {
+      transition: all 0.5s;
+      @include styleBtnHover(white, white, black);
+      i {
+         transition: all 0.5s;
+         color: black;
+      }
+   }
+}
+
+.btn-none {
+   border: none;
+   background: none;
+
+   &:focus {
+      outline: none;
+   }
+}
+
+.addQty {
+   display: none;
+}
+
+.cart-shopping {
+   .btn-cart {
+      &:hover {
+         i {
+            color: white;
+         }
+      }
+      i {
+         position: absolute;
+         font-size: $fs-5;
+         top: 20px;
+         color: black;
+         right: 20px;
+         transition: all 0.5s;
+      }
+      .totalQty {
+         position: absolute;
+         height: 1rem;
+         width: 1rem;
+         top: 0.7rem;
+         right: 0.9rem;
+         background-color: white;
+         color: black;
+         line-height: 1rem;
+         border-radius: 50%;
+         font-weight: 600;
+         border: 1px solid white;
+      }
+   }
+}
