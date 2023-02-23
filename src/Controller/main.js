@@ -117,6 +117,7 @@ const renderListProducts = (data) => {
    queryEle(".list-cards").innerHTML = contentHTML;
 };
 
+// Start: Modal
 queryEle(".btn-cart").addEventListener("click", () => {
    queryEle(".modal-cart").style.display = "flex";
    queryEle(".cover").style.display = "block";
@@ -134,7 +135,12 @@ const onClickCloseBtn = (modalEvent, event) =>
 
 onClickCloseBtn(queryEle("#btnClose"), hideListCart);
 onClickCloseBtn(queryEle(".cover"), hideListCart);
+// End: Modal
 
+/**
+ * While click add product to cart
+ * @param {*} id
+ */
 window.handleAddCart = (id) => {
    callAPI
       .getProductById(id)
@@ -157,6 +163,9 @@ window.handleAddCart = (id) => {
       });
 };
 
+/**
+ * Render quantity on cart icon
+ */
 const changeTotalQty = () => {
    let total = 0;
 
@@ -167,6 +176,10 @@ const changeTotalQty = () => {
    queryEle(".totalQty").innerHTML = total;
 };
 
+/**
+ * Render list product in cart modal
+ * @param {*} data
+ */
 const renderCart = (data) => {
    let contentCart = "";
 
