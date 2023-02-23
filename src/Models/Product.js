@@ -21,3 +21,5 @@ class Product {
       this.type = _type;
    }
 }
+
+export default Product;

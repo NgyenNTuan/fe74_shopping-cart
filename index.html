@@ -85,32 +85,38 @@
             </button>
          </div>
       </div>
-      <!-- <div class="cover"></div> -->
-      <!-- <div class="side-cart">
-         <div class="side-cart__head">
+      <div class="cover"></div>
+
+      <!-- MODAL SIDE CART -->
+      <div class="modal-cart">
+         <div class="modal-cart__head">
             <h3>Cart</h3>
-            <i class="fa-solid fa-xmark"></i>
+            <button id="btnClose" class="btn-none">
+               <i class="fa-solid fa-xmark"></i>
+            </button>
          </div>
-         <div class="side-cart__body">
-            <p>Looks Like You Haven't Added Any Product In The Cart</p>
+         <div class="modal-cart__body">
+            <p class="empty-cart">Looks Like You Haven't Added Any Product In The Cart</p>
          </div>
-         <div class="side-cart__bottom">
-            <span class="total-price">Total: $ 0</span>
+         <div class="modal-cart__bottom">
+            <p>Total: $
+               <span class="total-price">0</span>
+            </p>
             <div>
-               <button id="purchase" class="btn-c">
+               <button id="purchase" class="btn-c btn-pur">
                   Purchase
                   <i class="fa-solid fa-credit-card"></i>
                </button>
-               <button id="clearCart" class="btn-c">
+               <button id="clearCart" class="btn-c btn-clear">
                   Clear Cart
                   <i class="fa-solid fa-trash"></i>
                </button>
             </div>
          </div>
-      </div> -->
-      <div class="payment">
-
       </div>
+      <!-- <div class="payment">
+
+      </div> -->
    </div>
 
    <!-- Optional JavaScript -->
@@ -131,10 +137,7 @@
       crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
    <!-- MAIN JS -->
-   <script src="./src/Models/Product.js"></script>
-   <script src="./src/Models/ProductList.js"></script>
-   <script src="./src/Services/CallAPI.js"></script>
-   <script src="./src/Controller/main.js"></script>
+   <script type="module" src="./src/Controller/main.js"></script>
 </body>
 
 </html>
