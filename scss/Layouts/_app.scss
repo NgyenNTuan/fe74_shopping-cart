@@ -24,5 +24,17 @@
       height: 100%;
       backdrop-filter: blur(1px);
       background-color: $color-black-1;
+      display: none;
+      transition: all 0.5s;
+      animation: appearOpa ease 0.5s;
+   }
+}
+
+@keyframes appearOpa {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
    }
 }

@@ -153,6 +153,124 @@
   border: 1px solid white;
 }
 
+.btn-c {
+  font-size: 1.2rem;
+  background: transparent;
+  padding: 1rem 2rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+.btn-c i {
+  font-size: 1.2rem;
+}
+.btn-c:hover {
+  color: black;
+  box-shadow: inset 20em 0 0 0 white;
+}
+
+.btn-pur {
+  margin-right: 20px;
+}
+.btn-pur i {
+  color: #6665dd;
+}
+
+.btn-clear i {
+  color: #bb342f;
+}
+
+.modal-cart {
+  position: absolute;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 60%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+  display: none;
+  transition: all 0.5s;
+  animation: modalFadeIn ease 0.5s;
+}
+.modal-cart .open {
+  display: flex;
+}
+.modal-cart .modal-cart__head {
+  position: relative;
+}
+.modal-cart .modal-cart__head h3 {
+  line-height: 60px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+}
+.modal-cart .modal-cart__head i {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.5rem;
+}
+.modal-cart .modal-cart__body {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  height: 50%;
+  margin: 0 5%;
+}
+.modal-cart .modal-cart__body .empty-cart {
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.25);
+  text-align: center;
+  margin: auto 0;
+}
+.modal-cart .modal-cart__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-right: 20px;
+}
+.modal-cart .modal-cart__bottom p,
+.modal-cart .modal-cart__bottom .total-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(946px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.cart-item {
+  display: flex;
+  height: 5rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid white;
+}
+.cart-item .cart__img {
+  display: flex;
+  width: 5rem;
+  height: 5rem;
+}
+.cart-item .cart__img img {
+  width: 100%;
+  align-self: center;
+}
+.cart-item .cart__name {
+  margin-bottom: 0;
+}
+
 #app .banner {
   position: relative;
   height: 100vh;
@@ -177,4 +295,16 @@
   -webkit-backdrop-filter: blur(1px);
           backdrop-filter: blur(1px);
   background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  transition: all 0.5s;
+  animation: appearOpa ease 0.5s;
+}
+
+@keyframes appearOpa {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=main.css.map */

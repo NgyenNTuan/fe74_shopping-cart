@@ -58,3 +58,30 @@
       }
    }
 }
+
+.btn-c {
+   font-size: $fs-3;
+   @include styleBtn(transparent, 2rem, 1rem, 1px solid white, 10px);
+   transition: all 0.5s;
+   i {
+      font-size: $fs-3;
+   }
+
+   &:hover {
+      color: black;
+      box-shadow: inset 20em 0 0 0 white;
+   }
+}
+
+.btn-pur {
+   margin-right: 20px;
+   i {
+      color: $color-blue-1;
+   }
+}
+
+.btn-clear {
+   i {
+      color: $color-red-1;
+   }
+}

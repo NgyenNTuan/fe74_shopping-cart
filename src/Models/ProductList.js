@@ -5,3 +5,5 @@ class ProductList {
 
    // Method
 }
+
+export default ProductList;
