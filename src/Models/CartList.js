@@ -36,6 +36,16 @@ class CartList {
       }
    }
 
+   getProductById(id) {
+      let index = this._findIndex(id);
+
+      if (index !== -1) {
+         return this.arr[index];
+      }
+
+      return null;
+   }
+
    checkIdDuplicate(id, arr) {
       let exist = false;
 
