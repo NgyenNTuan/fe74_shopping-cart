@@ -1,14 +1,14 @@
 /**
- * 1. Tạo API Product bằng MockAPI
- * 2. Hiển thi danh sách sản phẩm
+ * 1. Tạo API Product bằng MockAPI -- OK
+ * 2. Hiển thi danh sách sản phẩm -- OK -- loading effect
  * 3. Tạo ô select cho phép filter theo loại sản phẩm: iphone, samsung
- * 4. Chọn sản phẩm bỏ vào giỏ hàng
- * 5. In giỏ hàng ra ngoài màn hình
+ * 4. Chọn sản phẩm bỏ vào giỏ hàng -- OK
+ * 5. In giỏ hàng ra ngoài màn hình -- OK
  * 6. Chỉnh sửa số lượng sản phẩm trong giở hàng và ở trên thẻ sản phẩm
- * 7. In tổng tiền
- * 8. Lưu giở hàng vào localStorage
+ * 7. In tổng tiền -- OK
+ * 8. Lưu giở hàng vào localStorage -- OK
  * 9. Khi người dùng nhấn nút thanh toán, clear giỏ hàng, set mảng giỏ hàng []
- * 10. Remove giỏ hàng ra khỏi sản phẩm
+ * 10. Remove sản phẩm khỏi giỏ hàng -- OK
  */
 import CallAPI from "./../Services/CallAPI.js";
 import Product from "./../Models/Product.js";
@@ -45,6 +45,7 @@ function getLocalStorage() {
    if (dataString) {
       cartList = JSON.parse(dataString);
       // Render list product in Cart
+      renderCart(cartList.arr);
    }
 }
 
@@ -98,15 +99,15 @@ const renderListProducts = (data) => {
                </div>
                <div class="product-purchase">
                   <div class="product-price">$ ${product.price}</div>
-                  <button id="addCartBtn" class="btn-p" onclick="handleAddCart(${product.id})">Add
+                  <button class="btn-p btn-add-cart" onclick="handleAddCart(this, ${product.id})">Add
                      <i class="fa-solid fa-chevron-right"></i>
                   </button>
-                  <span class="addQty">
-                     <button class="btn-p">
+                  <span class="change-quantity">
+                     <button class="btn-p" onclick="changeQty(this, 'sub', ${product.id})">
                         <i class="fa-solid fa-chevron-left"></i>
                      </button>
                      <span class="qtyProd">1</span>
-                     <button class="btn-p">
+                     <button class="btn-p" onclick="changeQty(this, 'add', ${product.id})">
                         <i class="fa-solid fa-chevron-right"></i>
                      </button>
                   </span>
@@ -141,26 +142,70 @@ onClickCloseBtn(queryEle(".cover"), hideListCart);
  * While click add product to cart
  * @param {*} id
  */
-window.handleAddCart = (id) => {
+window.handleAddCart = (e, id) => {
    callAPI
       .getProductById(id)
       .then((result) => {
-         if (cartList.checkIdDuplicate(id, cartList.arr)) {
-            let cartItem = { product: result.data, quantity: 1 };
-            cartList.addProductToCart(cartItem);
-         } else {
-            let cartItem = {
-               product: result.data,
-               quantity: cartList.arr[cartList._findIndex(id)].quantity + 1,
-            };
-            cartList.updateProductInCart(cartItem);
-         }
+         // Add product with qty 1 to cart
+         let cartItem = { product: result.data, quantity: 1 };
+         cartList.addProductToCart(cartItem);
+
+         // Display change qty button
+         e.style.display = "none";
+         e.parentElement.getElementsByTagName("span")[0].style.display =
+            "block";
+
+         // Show cart
          changeTotalQty();
+         renderTotal();
          renderCart(cartList.arr);
       })
       .catch((error) => {
          console.log(error);
       });
+};
+
+window.changeQty = (e, t, id) => {
+   if (t === "add") {
+      let obj = cartList.getProductById(id);
+      obj.quantity += 1;
+      cartList.updateProductInCart(obj);
+
+      // Update quantity on UI
+      changeTotalQty();
+      renderTotal();
+      renderCart(cartList.arr);
+      // renderQty(cartList.arr);
+      e.parentElement.getElementsByTagName("span")[0].innerHTML = obj.quantity;
+   }
+
+   if (t === "sub") {
+      let obj = cartList.getProductById(id);
+      if (obj.quantity === 1) {
+         cartList.deleteProductFromCart(id);
+
+         // Update on UI
+         changeTotalQty();
+         renderTotal();
+         renderCart(cartList.arr);
+         e.parentElement.style.display = "none";
+         e.parentElement.parentElement.getElementsByTagName(
+            "button"
+         )[0].style.display = "block";
+      } else {
+         obj.quantity -= 1;
+         cartList.updateProductInCart(obj);
+
+         // Update quantity on UI
+         changeTotalQty();
+         renderTotal();
+         renderCart(cartList.arr);
+         // renderQty(cartList.arr);
+
+         e.parentElement.getElementsByTagName("span")[0].innerHTML =
+            obj.quantity;
+      }
+   }
 };
 
 /**
@@ -170,12 +215,67 @@ const changeTotalQty = () => {
    let total = 0;
 
    for (const obj of cartList.arr) {
-      total += obj.quantity;
+      if (obj.quantity > 0) {
+         total += obj.quantity;
+      }
    }
 
    queryEle(".totalQty").innerHTML = total;
 };
 
+/**
+ *
+ * @param {*} data cartList.arr
+ */
+const renderProductFromLocal = (data) => {
+   let contentHTML = "";
+
+   if (data.length !== 0) {
+      data.forEach((obj, i) => {
+         contentHTML += `
+               <button class="btn-p" onclick="changeQty(this, 'sub', ${obj.product.id})">
+                  <i class="fa-solid fa-chevron-left"></i>
+               </button>
+               <span class="qtyProd">1</span>
+               <button class="btn-p" onclick="changeQty(this, 'add', ${obj.product.id})">
+                  <i class="fa-solid fa-chevron-right"></i>
+               </button>`;
+      });
+
+      queryEle(".list-cards").innerHTML = contentHTML;
+   } else {
+      getListProducts();
+   }
+};
+
+window.handleDeleteCart = (id) => {
+   // Delete in cart and save local
+   cartList.deleteProductFromCart(id);
+
+   // Render list cart
+   // If cartList []
+   if (cartList.arr.length === 0) {
+      queryEle(
+         ".modal-cart__body"
+      ).innerHTML = `<p class="empty-cart">Looks Like You Haven't Added Any Product In The Cart</p>`;
+   } else {
+      renderCart(cartList.arr);
+   }
+   renderTotal();
+   changeTotalQty();
+
+   // Change button qtyProd to add button
+};
+
+const renderTotal = () => {
+   let total = 0;
+   if (cartList.arr.length !== 0) {
+      for (const obj of cartList.arr) {
+         total += obj.product.price * obj.quantity;
+      }
+   }
+   queryEle(".total-price").innerHTML = total;
+};
 /**
  * Render list product in cart modal
  * @param {*} data
@@ -193,18 +293,18 @@ const renderCart = (data) => {
             </div>
             <p class="cart__name">${obj.product.name}</p>
             <span class="cart__qty--change">
-               <button class="btn-p">
+               <button class="btn-p" onclick="changeQty(this, 'sub', ${obj.product.id})">
                   <i class="fa-solid fa-chevron-left"></i>
                </button>
                <span class="cart__qty">${obj.quantity}</span>
-               <button class="btn-p">
+               <button class="btn-p" onclick="changeQty(this, 'add', ${obj.product.id})">
                   <i class="fa-solid fa-chevron-right"></i>
                </button>
             </span>
             <span class="cart__price">
                $ ${obj.product.price}
             </span>
-            <button class="cart__delete btn-none">
+            <button class="cart__delete btn-none" onclick="handleDeleteCart(${obj.product.id})">
                <i class="fa-solid fa-trash"></i>
             </button>
          </div>`;
