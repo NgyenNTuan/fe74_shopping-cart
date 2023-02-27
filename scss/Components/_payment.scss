@@ -1,0 +1,49 @@
+.payment {
+   position: absolute;
+   display: none;
+   width: 90%;
+   height: 90%;
+   top: 5%;
+   left: 5%;
+   background-color: rgba(0, 0, 0, 0.95);
+   border-radius: 20px;
+   padding: 5% 4%;
+
+   .payment-top {
+      .payment-item {
+         border-bottom: 1px solid white;
+         padding-bottom: 10px;
+         display: flex;
+         justify-content: space-between;
+         .payment-item-name,
+         .payment-item-price {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+         }
+      }
+
+      .payment-total {
+         p {
+            margin-top: 10px;
+            font-style: italic;
+            font-weight: 600;
+         }
+         .total-amount {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p {
+               font-style: normal;
+            }
+         }
+      }
+   }
+   .payment-bottom {
+      position: absolute;
+      display: flex;
+      justify-content: space-around;
+      bottom: 10%;
+      width: 40%;
+   }
+}
