@@ -63,6 +63,10 @@ class CartList {
 
       return true;
    }
+
+   deleteAllCart() {
+      this.arr.splice(0, this.arr.length);
+   }
 }
 
 export default CartList;

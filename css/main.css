@@ -180,6 +180,31 @@
   color: #bb342f;
 }
 
+.payment .btn__payment-now,
+.payment .btn__cancel {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 20px;
+}
+.payment .btn__payment-now {
+  background-color: #00bbf9;
+}
+.payment .btn__cancel {
+  background-color: #bb342f;
+}
+
+.order .btn--okay {
+  position: absolute;
+  margin-top: 10px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background-color: #5bc0be;
+  border-radius: 10px;
+  width: 80%;
+  left: 10%;
+  font-weight: 600;
+}
+
 .modal-cart {
   position: absolute;
   flex-direction: column;
@@ -269,6 +294,89 @@
 }
 .cart-item .cart__name {
   margin-bottom: 0;
+}
+
+.filter-product {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+.filter-product #filter-type {
+  color: black;
+  border-radius: 20px;
+}
+.filter-product #filter-type option {
+  color: black;
+}
+
+.payment {
+  position: absolute;
+  display: none;
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+  background-color: rgba(0, 0, 0, 0.95);
+  border-radius: 20px;
+  padding: 5% 4%;
+}
+.payment .payment-top .payment-item {
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.payment .payment-top .payment-item .payment-item-name,
+.payment .payment-top .payment-item .payment-item-price {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.payment .payment-top .payment-total p {
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: 600;
+}
+.payment .payment-top .payment-total .total-amount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.payment .payment-top .payment-total .total-amount p {
+  font-style: normal;
+}
+.payment .payment-bottom {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  bottom: 10%;
+  width: 40%;
+}
+
+.order {
+  position: absolute;
+  width: 400px;
+  height: 90%;
+  top: 5%;
+  left: 40%;
+  background-color: rgba(0, 0, 0, 0.95);
+  border-radius: 20px;
+  padding: 3%;
+  display: none;
+}
+.order .order-detail div {
+  border-bottom: 1px dashed white;
+  font-size: 1.1rem;
+  padding: 10px 0;
+}
+.order .order-detail h4 {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 600;
+}
+.order .order-detail .order-id,
+.order .order-detail .total-order {
+  font-weight: 600;
 }
 
 #app .banner {

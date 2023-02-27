@@ -85,3 +85,32 @@
       color: $color-red-1;
    }
 }
+
+.payment {
+   .btn__payment-now,
+   .btn__cancel {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 20px;
+   }
+   .btn__payment-now {
+      background-color: #00bbf9;
+   }
+   .btn__cancel {
+      background-color: #bb342f;
+   }
+}
+
+.order {
+   .btn--okay {
+      position: absolute;
+      margin-top: 10px;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      background-color: #5bc0be;
+      border-radius: 10px;
+      width: 80%;
+      left: 10%;
+      font-weight: 600;
+   }
+}

@@ -1,0 +1,12 @@
+.filter-product {
+   position: absolute;
+   top: 10%;
+   right: 10%;
+   #filter-type {
+      color: black;
+      border-radius: 20px;
+      option {
+         color: black;
+      }
+   }
+}
