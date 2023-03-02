@@ -193,7 +193,7 @@
   background-color: #bb342f;
 }
 
-.order .btn--okay {
+.btn--okay {
   position: absolute;
   margin-top: 10px;
   padding: 1rem 2rem;
@@ -377,6 +377,24 @@
 .order .order-detail .order-id,
 .order .order-detail .total-order {
   font-weight: 600;
+}
+
+.thanks {
+  position: absolute;
+  width: 26%;
+  height: 200px;
+  left: 40%;
+  top: 40%;
+  background-color: rgba(0, 0, 0, 0.95);
+  border-radius: 20px;
+  text-align: center;
+  padding: 2% 2%;
+  display: none;
+}
+.thanks p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-style: italic;
 }
 
 #app .banner {
