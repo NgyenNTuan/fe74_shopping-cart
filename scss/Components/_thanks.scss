@@ -1,0 +1,17 @@
+.thanks {
+   position: absolute;
+   width: 26%;
+   height: 200px;
+   left: 40%;
+   top: 40%;
+   background-color: rgba(0, 0, 0, 0.95);
+   border-radius: 20px;
+   text-align: center;
+   padding: 2% 2%;
+   display: none;
+   p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      font-style: italic;
+   }
+}

@@ -46,11 +46,11 @@ class CartList {
       return null;
    }
 
-   checkIdDuplicate(id, arr) {
+   checkIdDuplicate(id) {
       let exist = false;
 
-      for (let i = 0; i < arr.length; i++) {
-         const obj = arr[i];
+      for (let i = 0; i < this.arr.length; i++) {
+         const obj = this.arr[i];
          if (obj.product.id == id) {
             exist = true;
             break;
