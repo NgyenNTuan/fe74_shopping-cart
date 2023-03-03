@@ -1,2 +1,2 @@
-# fe74_shopping-cart
+# fe74_shopping-cart_capstone
 Capstone
