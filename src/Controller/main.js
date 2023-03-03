@@ -16,6 +16,7 @@ const getListProducts = () => {
          productList.arr = result.data;
          renderListProducts(result.data);
          getLocalStorage();
+         console.log(result.data);
       })
       .catch((error) => {
          console.log(error);
@@ -48,7 +49,7 @@ function renderListProducts(data) {
             </div>
             <div class="card-img">
                <img class="product-img"
-                  src="${product.img}"
+                  src="./imgs/product_tet/${product.img}"
                   alt="">
             </div>
             <div class="card-bottom">
@@ -59,8 +60,8 @@ function renderListProducts(data) {
                   </button>
                </div>
                <div class="wrapper">
-                  <h5>${product.type}</h5>
-                  <p>+ ${product.desc}</p>
+                  <h5>${product.category}</h5>
+                  <p>+ ${product.description}</p>
                   <p>+ ${product.screen}</p>
                   <p>+ Camera sau: ${product.backCamera}</p>  
                   <p>+ Camera trước: ${product.frontCamera}</p>
@@ -235,7 +236,7 @@ function renderProductFromLocal(data) {
          }
       }
    } else {
-      getListProducts();
+      renderListProducts(productList.arr);
    }
 }
 
@@ -289,7 +290,7 @@ function renderCart(data) {
          <div class="cart-item">
             <div class="cart__img">
                <img
-                  src="${obj.product.img}"
+                  src="./imgs/product_tet/${obj.product.img}"
                   alt="">
             </div>
             <p class="cart__name">${obj.product.name}</p>
