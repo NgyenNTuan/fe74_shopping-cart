@@ -24,7 +24,7 @@ class ProductList {
       let newList = [];
 
       for (const prod of this.arr) {
-         if (prod.type.toLowerCase() === value.toLowerCase()) {
+         if (prod.category.toLowerCase() === value.toLowerCase()) {
             newList.push(prod);
          }
       }
