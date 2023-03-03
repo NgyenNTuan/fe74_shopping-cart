@@ -15,8 +15,8 @@ const getListProducts = () => {
       .then((result) => {
          productList.arr = result.data;
          renderListProducts(result.data);
+         renderSelectFilter(result.data);
          getLocalStorage();
-         console.log(result.data);
       })
       .catch((error) => {
          console.log(error);
@@ -32,6 +32,23 @@ getListProducts();
  */
 function queryEle(query) {
    return document.querySelector(query);
+}
+
+function renderSelectFilter(data) {
+   let contentSelect = "<option>All</option>";
+
+   const arrCategory = data.reduce((accumulator, prod) => {
+      if (!accumulator.includes(prod.category)) {
+         return [...accumulator, prod.category];
+      }
+      return accumulator;
+   }, []);
+
+   for (const item of arrCategory) {
+      contentSelect += `<option>${item}</option>`;
+   }
+
+   queryEle("#filter-type").innerHTML = contentSelect;
 }
 
 /**
